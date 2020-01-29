@@ -48,10 +48,10 @@ public class VendorController {
             foundVendor.setFirstName(vendor.getFirstName());
             return vendorRepository.save(foundVendor);
         }
-//        if(!foundVendor.getLastName().equals(vendor.getLastName())){
-//            foundVendor.setLastName(vendor.getLastName());
-//            return vendorRepository.save(foundVendor);
-//        } //todo implement lastname in tests
+        if(!foundVendor.getLastName().equals(vendor.getLastName())){
+            foundVendor.setLastName(vendor.getLastName());
+            return vendorRepository.save(foundVendor);
+        }
 
         return Mono.just(foundVendor);
     }

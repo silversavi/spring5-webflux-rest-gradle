@@ -90,12 +90,12 @@ class VendorControllerTest {
     @Test
     public void testPatchVendorWithChanges() {
         given(vendorRepository.findById(anyString()))
-                .willReturn(Mono.just(Vendor.builder().firstName("Jimmy").build()));
+                .willReturn(Mono.just(Vendor.builder().firstName("Jimmy").lastName("Morgan").build()));
 
         given(vendorRepository.save(any(Vendor.class)))
                 .willReturn(Mono.just(Vendor.builder().build()));
 
-        Mono<Vendor> vendorToUpdateMono = Mono.just(Vendor.builder().firstName("Casper").build());
+        Mono<Vendor> vendorToUpdateMono = Mono.just(Vendor.builder().firstName("Casper").lastName("Masters").build());
 
         webTestClient.patch()
                 .uri("/api/v1/vendors/blabla")
@@ -110,12 +110,12 @@ class VendorControllerTest {
     @Test
     public void testPatchCategoryNoChanges() {
         given(vendorRepository.findById(anyString()))
-                .willReturn(Mono.just(Vendor.builder().firstName("Jimmy").build()));
+                .willReturn(Mono.just(Vendor.builder().firstName("Jimmy").lastName("Morgan").build()));
 
         given(vendorRepository.save(any(Vendor.class)))
                 .willReturn(Mono.just(Vendor.builder().build()));
 
-        Mono<Vendor> vendorToUpdateMono = Mono.just(Vendor.builder().firstName("Jimmy").build());
+        Mono<Vendor> vendorToUpdateMono = Mono.just(Vendor.builder().firstName("Jimmy").lastName("Morgan").build());
 
         webTestClient.patch()
                 .uri("/api/v1/vendors/siadas")
